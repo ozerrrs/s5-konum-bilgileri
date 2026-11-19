@@ -30,7 +30,15 @@ console.log(ipAdresim);
 */
 
 async function getData() {
-  /* kodlar buraya */
+  const ip = await ipAdresimiAl();
+  let responseData;
+  await axios
+    .get(`https://apis.code2work.co/ipgeoapi/${ip}`)
+    .then((response) => {
+      responseData = response.data;
+    });
+  console.log(responseData);
+  return responseData;
 }
 
 /*
@@ -54,7 +62,43 @@ async function getData() {
   </div>
 */
 
-function cardOlustur(/* kodlar buraya */) {
+function cardOlustur(cardObj) {
+  const card = document.createElement("div");
+  card.classList.add("card");
+  const img = document.createElement("img");
+  img.src = `https://flaglog.com/codes/standardized-rectangle-120px/${cardObj.country_code}.png`;
+  const cardInfo = document.createElement("div");
+  cardInfo.classList.add("card-info");
+  const h3 = document.createElement("h3");
+  h3.classList.add("ip");
+  h3.textContent = cardObj.ip;
+  const pUlke = document.createElement("p");
+  pUlke.classList.add("ulke");
+  pUlke.textContent = `${cardObj.country_name} (${cardObj.country_code})`;
+  const pEnlemBoylam = document.createElement("p");
+  pEnlemBoylam.textContent = `Enlem: ${cardObj.latitude} Boylam: ${cardObj.longitude}`;
+  const pSehir = document.createElement("p");
+  pSehir.textContent = `Şehir: ${cardObj.city}`;
+  const pSaatDilimi = document.createElement("p");
+  pSaatDilimi.textContent = `Saat dilimi: ${cardObj.timezone}`;
+  const pParaBirimi = document.createElement("p");
+  pParaBirimi.textContent = `Para birimi: ${cardObj.currency}`;
+  const pIsp = document.createElement("p");
+  pIsp.textContent = `ISP: ${cardObj.isp}`;
+
+  cardInfo.appendChild(h3);
+  cardInfo.appendChild(pUlke);
+  cardInfo.appendChild(pEnlemBoylam);
+  cardInfo.appendChild(pSehir);
+  cardInfo.appendChild(pSaatDilimi);
+  cardInfo.appendChild(pParaBirimi);
+  cardInfo.appendChild(pIsp);
+
+  card.appendChild(img);
+  card.appendChild(cardInfo);
+
+  return card;
+
   /* kodlar buraya */
 }
 
