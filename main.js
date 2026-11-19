@@ -66,23 +66,25 @@ function cardOlustur(cardObj) {
   const card = document.createElement("div");
   card.classList.add("card");
   const img = document.createElement("img");
-  img.src = `https://flaglog.com/codes/standardized-rectangle-120px/${cardObj.country_code}.png`;
+  img.src = `https://flaglog.com/codes/standardized-rectangle-120px/${cardObj.ülkeKodu}.png`;
+  img.referrerPolicy = "no-referrer";
+
   const cardInfo = document.createElement("div");
   cardInfo.classList.add("card-info");
   const h3 = document.createElement("h3");
   h3.classList.add("ip");
-  h3.textContent = cardObj.ip;
+  h3.textContent = cardObj.sorgu;
   const pUlke = document.createElement("p");
   pUlke.classList.add("ulke");
-  pUlke.textContent = `${cardObj.country_name} (${cardObj.country_code})`;
+  pUlke.textContent = `${cardObj.ülke} (${cardObj.ülkeKodu})`;
   const pEnlemBoylam = document.createElement("p");
-  pEnlemBoylam.textContent = `Enlem: ${cardObj.latitude} Boylam: ${cardObj.longitude}`;
+  pEnlemBoylam.textContent = `Enlem: ${cardObj.enlem} - Boylam: ${cardObj.boylam}`;
   const pSehir = document.createElement("p");
-  pSehir.textContent = `Şehir: ${cardObj.city}`;
+  pSehir.textContent = `Şehir: ${cardObj.bölgeAdı}`;
   const pSaatDilimi = document.createElement("p");
-  pSaatDilimi.textContent = `Saat dilimi: ${cardObj.timezone}`;
+  pSaatDilimi.textContent = `Saat dilimi: ${cardObj.saatdilimi}`;
   const pParaBirimi = document.createElement("p");
-  pParaBirimi.textContent = `Para birimi: ${cardObj.currency}`;
+  pParaBirimi.textContent = `Para birimi: ${cardObj.parabirimi}`;
   const pIsp = document.createElement("p");
   pIsp.textContent = `ISP: ${cardObj.isp}`;
 
