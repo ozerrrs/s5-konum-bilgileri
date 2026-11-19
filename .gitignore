@@ -3,3 +3,5 @@ node_modules
 /.test-results
 .test-results
 .DS_Store
+.lh
+.history
